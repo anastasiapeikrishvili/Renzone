@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Renzone – rent your camping kit in Turin</title>
+  <meta name="description" content="Rent a complete camping kit in Turin, add exactly what your trip needs, and we deliver it to your door.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav container" aria-label="Main">
+    <a href="#top" class="wordmark">RENZONE</a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#builder">Build your kit</a>
+      <a href="#spots">Where to go</a>
+      <a href="#faq">FAQ</a>
+      <a href="#builder" class="btn btn-accent btn-sm">Build my kit</a>
+    </div>
+  </nav>
+
+  <div id="top" class="hero container">
+    <div class="hero-copy">
+      <h1>Go camping this weekend. Own nothing.</h1>
+      <p class="hero-lead">Rent a complete camping kit in Turin, add exactly what your trip needs, and we deliver it to your door. When you’re back, we pick it up.</p>
+      <div class="hero-actions">
+        <a href="#builder" class="btn btn-accent btn-lg">Build my kit</a>
+        <a href="#how" class="btn btn-outline btn-lg">See how it works</a>
+      </div>
+    </div>
+    <svg class="hero-art" viewBox="0 0 520 380" fill="none" aria-hidden="true">
+      <path d="M0 300 L120 150 L190 220 L300 80 L420 230 L470 180 L520 240" stroke="#5E7A66" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M300 80 L272 116 L292 108 L312 128 L330 118" stroke="#F3EEE3" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="430" cy="70" r="26" stroke="#F3EEE3" stroke-width="5"/>
+      <path d="M150 340 L260 170 L370 340 Z" stroke="#F3EEE3" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M260 170 L260 340" stroke="#F3EEE3" stroke-width="7"/>
+      <path d="M260 255 L226 340 L294 340 Z" fill="var(--accent)"/>
+      <path d="M80 340 L480 340" stroke="#F3EEE3" stroke-width="7" stroke-linecap="round"/>
+      <path d="M400 340 L416 300 L432 340" stroke="#F3EEE3" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M406 318 L426 318" stroke="#F3EEE3" stroke-width="5"/>
+    </svg>
+  </div>
+</header>
+
+<main>
+  <section id="how" class="section container">
+    <h2>Three steps to the campsite</h2>
+    <p class="section-lead">No buying gear you’ll use twice a year, no storing it in a small flat, no trips between ten shops.</p>
+    <ol class="steps">
+      <li>
+        <div class="step-num">1</div>
+        <h3>Choose your kit</h3>
+        <p>Start from the basic package: tent, sleeping bags, mats and cooking gear. Add anything else your trip needs.</p>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <h3>Pick your dates</h3>
+        <p>Tell us when you leave and when you’re back. One night or a long weekend.</p>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <h3>We deliver and collect</h3>
+        <p>The box arrives at your door before the trip. When you’re home, we pick it up. That’s it.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="builder" class="builder">
+    <div class="container">
+      <h2>Pack your box</h2>
+      <p class="section-lead">Set your group size and trip length, then add extras. Your box updates as you go.</p>
+
+      <div class="builder-layout">
+        <div class="builder-form">
+          <div>
+            <h3>How many people?</h3>
+            <div class="choice-row" data-group="people">
+              <button type="button" class="choice" data-value="2" aria-pressed="true">2 people</button>
+              <button type="button" class="choice" data-value="4" aria-pressed="false">4 people</button>
+              <button type="button" class="choice" data-value="6" aria-pressed="false">6 people</button>
+            </div>
+          </div>
+
+          <div>
+            <h3>How many nights?</h3>
+            <div class="choice-row" data-group="nights">
+              <button type="button" class="choice" data-value="1" aria-pressed="false">1 night</button>
+              <button type="button" class="choice" data-value="2" aria-pressed="true">2 nights</button>
+              <button type="button" class="choice" data-value="3" aria-pressed="false">3 nights</button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="tight">Add extras</h3>
+            <p class="hint">Tap to add or remove.</p>
+            <div class="addons" id="addons"></div>
+          </div>
+
+          <div class="fields">
+            <label class="field">Pick-up date
+              <input type="date" name="pickup">
+            </label>
+            <label class="field">Return date
+              <input type="date" name="return">
+            </label>
+            <label class="field field-wide">Delivery address in Turin
+              <input type="text" name="address" placeholder="Via, number, postcode" autocomplete="street-address">
+            </label>
+          </div>
+        </div>
+
+        <aside class="box" aria-live="polite">
+          <div id="box-summary">
+            <h3>Your box</h3>
+            <p class="box-sub" data-trip-line></p>
+            <ul class="box-list" id="box-list"></ul>
+            <p class="box-note"><span id="count-line"></span> Delivery and pick-up included. Price: [YOUR PRICE]</p>
+            <button type="button" class="btn btn-accent btn-block" id="send">Request this kit</button>
+          </div>
+          <div id="box-sent" hidden>
+            <h3>Kit requested</h3>
+            <p class="box-confirm">We’ve got your request for <span data-trip-line></span>. We’ll message you to confirm the delivery time.</p>
+            <button type="button" class="btn btn-outline btn-block" id="edit">Change my kit</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="spots" class="section container">
+    <h2>Where to go from Turin</h2>
+    <p class="section-lead wide">A few places within a short drive. Check local rules before you pitch: free camping is restricted in much of Italy, so most trips start at a campsite.</p>
+    <div class="spots">
+      <div class="spot">
+        <h3>Gran Paradiso</h3>
+        <p class="spot-time">About 1.5 hours</p>
+        <p>Italy’s oldest national park: high valleys, ibex and big alpine views.</p>
+      </div>
+      <div class="spot">
+        <h3>Val di Susa</h3>
+        <p class="spot-time">About 1 hour</p>
+        <p>The easy escape west of the city, with forests, forts and trails.</p>
+      </div>
+      <div class="spot">
+        <h3>Valle Maira</h3>
+        <p class="spot-time">About 2 hours</p>
+        <p>Quiet stone villages and long walking routes in the Cuneo Alps.</p>
+      </div>
+      <div class="spot">
+        <h3>Lago d’Orta</h3>
+        <p class="spot-time">About 1.5 hours</p>
+        <p>A calm lake weekend with swimming spots and lakeside campsites.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq container">
+    <h2>Questions</h2>
+    <details>
+      <summary>Is the gear clean?</summary>
+      <p>Every item is checked and cleaned after each rental. [Confirm your cleaning process]</p>
+    </details>
+    <details>
+      <summary>Where do you deliver?</summary>
+      <p>Turin and the surrounding area. [Add your exact delivery zone]</p>
+    </details>
+    <details>
+      <summary>What if something breaks?</summary>
+      <p>Tell us when we collect the kit and we’ll sort it out together. [Add your deposit or damage policy]</p>
+    </details>
+    <details>
+      <summary>What if it rains and we cancel?</summary>
+      <p>[Add your cancellation policy]</p>
+    </details>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <div>
+      <div class="wordmark">RENZONE</div>
+      <p>Everything for your adventure, without owning any of it.</p>
+    </div>
+    <a href="https://www.instagram.com/renzoneturin">Follow @renzoneturin on Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>
